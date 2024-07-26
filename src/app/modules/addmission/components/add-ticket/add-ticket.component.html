@@ -1,0 +1,13 @@
+<form [formGroup]="form" (ngSubmit)="submit()">
+    <div dir="rtl" class="container-fluid d-flex justify-content-center align-items-center vh-100 ">
+        <input (keypress)="numberOnly($event)" type="text" formControlName="nationalId"
+            placeholder="ادخل الرقم القومي هنا ...." pInputText class="w-75 mb-5">
+        <!-- <p-inputNumber inputId="integeronly" (keypress)="numberOnly($event)" type="text" formControlName="nationalId"
+            placeholder="ادخل الرقم القومي هنا ...." class="w-75 mb-5">
+        </p-inputNumber> -->
+        <p-button label="اضافة" class="mb-5 me-1" type="submit" [disabled]="form.invalid"></p-button>
+        <br>
+        <!-- <small class="text-danger" *ngIf="form.get('nationalId')?.errors?.['required']">National ID is required.</small>
+        <small class="text-danger" *ngIf="form.get('nationalId')?.errors?.['pattern']">Invalid National ID format.</small> -->
+    </div>
+</form>

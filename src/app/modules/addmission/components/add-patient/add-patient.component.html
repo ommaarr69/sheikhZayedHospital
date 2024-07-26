@@ -1,0 +1,165 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div dir="rtl" class="container-fluid">
+        <div id="print" dir="rtl">
+            <div dir="rtl">
+                <div class="row text-center pt-2">
+                    <div class="col-md-4">
+                        <p>وزارة الصحة والاسكان</p>
+                        <p>مديرية الشئون الصحية بالجيزة</p>
+                        <p>مستشفى الشيخ زايد المركزي</p>
+                    </div>
+                    <div class="col-md-4">
+                        <p>تذكرة</p>
+                        <p>استقبال طوارئ</p>
+                    </div>
+                    <div class="col-md-4">
+                        <p>كود المريض</p>
+                        <div class="border border-1 p-3">
+                            
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-4">
+                        <label for="">الرقم القومي</label>
+                        <input type="text" formControlName="nationalId" [disabled]="true" pInputText>
+                    </div>
+
+                    <div class="col-md-4">
+                        <label for="">النوع</label>
+                        <p-dropdown [options]="genderList" class="w-100" placeholder="اختر النوع"
+                            formControlName="gender" optionLabel="name" optionValue="id"
+                            [showClear]="true"></p-dropdown>
+                    </div>
+
+                    <div class="col-md-4">
+                        <label for="">العمر</label>
+                        <p-inputNumber inputId="integeronly" placeholder="اكتب العمر هنا ..." formControlName="age">
+                        </p-inputNumber>
+                    </div>
+                </div>
+
+                <div class="row mt-3">
+                    <div class="col-md-4">
+                        <label for="">اسم المريض</label>
+                        <input type="text" placeholder="اكتب الاسم هنا ..." formControlName="fullName" pInputText>
+                    </div>
+
+                    <div class="col-md-4">
+                        <label for="">الجنسية</label>
+                        <input type="text" placeholder="اكتب الجنسية هنا ..." formControlName="nationality" pInputText>
+                    </div>
+
+                    <div class="col-md-4">
+                        <label for="">الموبايل</label>
+                        <input (keypress)="numberOnly($event)" type="text" formControlName="phoneNumber"
+                            placeholder="ادخل رقم الموبايل ...." pInputText class="w-75 mb-5">
+
+                    </div>
+                </div>
+
+                <div class="row mt-1    ">
+                    <div class="col-md-8">
+                        <label for="">العنوان</label>
+                        <input type="text" class="w-75" placeholder="اكتب العنوان هنا ..." formControlName="address"
+                            pInputText>
+                    </div>
+                    <!-- <div class="col-md-4">
+                        <label for="">التاريخ</label>
+                        <input type="text" class="w-75" formControlName="date" pInputText>
+                    </div> -->
+                </div>
+
+                <!-- <div class="row mt-2">
+                    <div class="col-md-6 border-1 border">
+                        <p for="">علاج الطوارئ : </p>
+                        <textarea rows="5" class="w-100" cols="30" pInputTextarea></textarea>
+                    </div>
+                    <div class="col-md-6 border-1 border">
+                        <p for="">التاريخ المرضي : </p>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="field-checkbox">
+                                    <p-checkbox name="group1" class="my-1 me-2" value="New York"
+                                        inputId="ny"></p-checkbox>
+                                    <label class="my-1" for="ny">ضغط</label>
+                                </div>
+                                <div class="field-checkbox">
+                                    <p-checkbox name="group1" class="my-1 me-2" value="San Francisco"
+                                        inputId="sf"></p-checkbox>
+                                    <label class="my-1" for="sf">سكر</label>
+                                </div>
+                                <div class="field-checkbox">
+                                    <p-checkbox name="group1" class="my-1 me-2" value="Los Angeles"
+                                        inputId="la"></p-checkbox>
+                                    <label class="my-1" for="la">قلب</label>
+                                </div>
+                                <div class="field-checkbox">
+                                    <p-checkbox name="group1" class="my-1 me-2" value="Chicago"
+                                        inputId="ch"></p-checkbox>
+                                    <label class="my-1" for="ch">اخرى</label>
+                                </div>
+                            </div>
+                            <div class="col-md-8">
+                                <textarea class="w-100" rows="5" cols="30" pInputTextarea></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mt-2">
+                    <div class="col-md-6 border-1 border">
+                        <p for="">الفحوصات المطلوبة : </p>
+                        <textarea rows="5" class="w-100" cols="30" pInputTextarea></textarea>
+                    </div>
+                    <div class="col-md-6 border border-1">
+                        <p for="">الاجراء المتخذ : </p>
+                        <div class="row">
+                            <div class="col-md-8">
+                                <textarea class="w-100" rows="5" cols="30" pInputTextarea></textarea>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="field-checkbox">
+                                    <p-checkbox name="group1" class="my-1" value="New York" inputId="ny"></p-checkbox>
+                                    <label class="my-1" for="ny">خروج تحسن</label>
+                                </div>
+                                <div class="field-checkbox">
+                                    <p-checkbox name="group1" class="my-1" value="San Francisco"
+                                        inputId="sf"></p-checkbox>
+                                    <label class="my-1" for="sf">تحويل</label>
+                                </div>
+                                <div class="field-checkbox">
+                                    <p-checkbox name="group1" class="my-1" value="Los Angeles"
+                                        inputId="la"></p-checkbox>
+                                    <label class="my-1" for="la">خروج وفاة</label>
+                                </div>
+                                <div class="field-checkbox">
+                                    <p-checkbox name="group1" class="my-1" value="Chicago" inputId="ch"></p-checkbox>
+                                    <label class="my-1" for="ch">دخول</label>
+                                </div>
+                                <div class="field-checkbox">
+                                    <p-checkbox name="group1" class="my-1" value="Chicago" inputId="ch"></p-checkbox>
+                                    <label class="my-1" for="ch">حسب الطلب</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> -->
+            </div>
+        </div>
+        <div class="row mt-4 justify-content-center ">
+            <div class="col-md-1">
+                <p-button label="طباعة" class="mb-5 me-1" (onClick)="onSubmit()" [disabled]="form.invalid"></p-button>
+            </div>
+        </div>
+    </div>
+</form>
+
+
+
+
+
+
+
+
